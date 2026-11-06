@@ -1,0 +1,155 @@
+{
+  "ts": "2026-11-06T07:21:52.689Z",
+  "deployment": {
+    "contracts": {
+      "bank": {
+        "address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+        "txHash": "0x34c3e35366578c96f76f3b9874f1d70f01c40868bfe604875ed86cfbe60a760b",
+        "block": "1"
+      },
+      "retail": {
+        "address": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+        "txHash": "0x82a5e1e943c6d66b0e1deac5b53cba99ca72748abe9f3bb4c42225a6fb2c6f0d",
+        "block": "2"
+      },
+      "hub": {
+        "address": "0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0",
+        "txHash": "0x9521a24e7e9da13ec952edc6c8b812617a7f2929498f98255f490c38be2b57ed",
+        "block": "3"
+      }
+    },
+    "accounts": [
+      {
+        "key": "admin",
+        "label": "Administrator",
+        "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "roles": "DEFAULT_ADMIN_ROLE (all 3 contracts)"
+      },
+      {
+        "key": "orchestrator",
+        "label": "Buyer's bank (orchestrator)",
+        "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "roles": "OPERATOR_ROLE (A), ORCHESTRATOR_ROLE (Hub)"
+      },
+      {
+        "key": "settlement",
+        "label": "Clearing center",
+        "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "roles": "SETTLEMENT_ROLE (A)"
+      },
+      {
+        "key": "retailer",
+        "label": "Retailer 'Magazin Astana'",
+        "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+        "roles": "RETAILER_ROLE (B)"
+      },
+      {
+        "key": "supplier1",
+        "label": "Supplier 'Agro-Opt LLP'",
+        "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+        "roles": "SUPPLIER_ROLE (B)"
+      },
+      {
+        "key": "supplier2",
+        "label": "Supplier 'Fresh Products LLP'",
+        "address": "0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc",
+        "roles": "SUPPLIER_ROLE (B)"
+      },
+      {
+        "key": "attacker",
+        "label": "Attacker",
+        "address": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+        "roles": "none"
+      }
+    ]
+  },
+  "orderNo": "PO-2026-000003",
+  "registrationLatencyMs": 124,
+  "endToEndMs": 720,
+  "summary": {
+    "orderNo": "PO-2026-000003",
+    "orderId": "0x8638dbfb5fba87079949dfbd0577eadcebaac39865640a693d6ac7b708781733",
+    "po": {
+      "status": "Approved",
+      "total": "15890000",
+      "poHash": "0x9392dc5a0e8e78f7ebf1e3a6dfe9ba4e64c0135966ef911ddf031d616c58ce97",
+      "retailer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "supplier": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+    },
+    "payment": {
+      "paymentId": "0xe38a6b119eb230ff022321db39a3bad575473c942d3876cc5a85a4eb49a177a9",
+      "status": "Executed",
+      "amount": "15890000",
+      "docHash": "0x9392dc5a0e8e78f7ebf1e3a6dfe9ba4e64c0135966ef911ddf031d616c58ce97"
+    },
+    "hub": {
+      "status": "Paid",
+      "attempt": 1,
+      "amount": "15890000",
+      "docHash": "0x9392dc5a0e8e78f7ebf1e3a6dfe9ba4e64c0135966ef911ddf031d616c58ce97"
+    },
+    "checks": {
+      "amountMatches": true,
+      "hashMatches": true
+    },
+    "steps": [
+      {
+        "step": "PO created",
+        "module": "retail",
+        "txHash": "0x97fde99e2a9cec39632f5b69e319d3bfb9eeac9f01fc60a37fa20fc915e64262",
+        "block": "22",
+        "detail": "total 15890000 tiyn, poHash 0x9392dc5a…",
+        "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+        "ts": 1793949725
+      },
+      {
+        "step": "PO approved",
+        "module": "retail",
+        "txHash": "0xdcf22f344842488dd65776ef0f02d1973b3de283141921633b4f21f659745ca0",
+        "block": "23",
+        "actor": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+        "ts": 1793949726
+      },
+      {
+        "step": "Payment registered",
+        "module": "bank",
+        "txHash": "0x2b7dec3cfefd5e0ec695cf164f49654cfb94628f695f0f31fa35710928d85a22",
+        "block": "24",
+        "detail": "amount 15890000, docHash 0x9392dc5a…",
+        "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "ts": 1793949727
+      },
+      {
+        "step": "Hub linked",
+        "module": "hub",
+        "txHash": "0xc73d49f6011b87441857dc9633e76f976d8fc2537552c397d691e87b83e456be",
+        "block": "25",
+        "detail": "attempt 1, amount 15890000",
+        "ts": 1793949728
+      },
+      {
+        "step": "Payment status",
+        "module": "bank",
+        "txHash": "0x23d2694d27ff309c670210d5e9cc4bb8c23be7ac9fa7d9b253549796b0740b9d",
+        "block": "26",
+        "detail": "Registered -> Executed",
+        "actor": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "ts": 1793949729
+      },
+      {
+        "step": "Hub finalized",
+        "module": "hub",
+        "txHash": "0xf0927231a6071b4a15ae331bc7d8172a70e7d30c671fd6943ff814a399cb08b6",
+        "block": "27",
+        "detail": "Paid",
+        "ts": 1793949730
+      }
+    ],
+    "attempts": 1
+  },
+  "gas": {
+    "createPO": "169213",
+    "approvePO": "38502",
+    "markExecuted": "61730"
+  }
+}

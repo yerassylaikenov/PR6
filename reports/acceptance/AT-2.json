@@ -1,0 +1,35 @@
+{
+  "id": "AT-2",
+  "title": "Unauthorized permissions",
+  "expected": "all reverted, state unchanged, R-1",
+  "result": "PASS",
+  "actual": {
+    "orderNo": "PO-2026-000002",
+    "errors": {
+      "attackerApprovePO": "AccessControlUnauthorizedAccount",
+      "wrongSupplierApprovePO": "NotOrderSupplier",
+      "attackerRegisterPayment": "AccessControlUnauthorizedAccount",
+      "attackerLinkPayment": "AccessControlUnauthorizedAccount",
+      "retailerMarkExecuted": "AccessControlUnauthorizedAccount"
+    },
+    "before": {
+      "po": "Created",
+      "payment": "None",
+      "hub": "None"
+    },
+    "after": {
+      "po": "Created",
+      "payment": "None",
+      "hub": "None"
+    },
+    "alert": {
+      "rule": "R-1",
+      "severity": "High",
+      "key": "0x976ea74026e726554db657fa54763abd0c3a0aa9",
+      "correlationId": "0x3d02bc0dbbbbd1f4b71f763b7906ce3ca9b69b5ad88055c7cb15ccad946fb530",
+      "ts": "2026-11-06T07:14:50.688Z",
+      "message": "3 access-control violations from 0x976ea74026e726554db657fa54763abd0c3a0aa9 within 60s (last: AccessControlUnauthorizedAccount)"
+    }
+  },
+  "ts": "2026-11-06T07:14:50.737Z"
+}

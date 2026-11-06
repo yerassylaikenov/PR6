@@ -1,0 +1,74 @@
+{
+  "ts": "2026-11-06T07:16:05.481Z",
+  "passed": 10,
+  "total": 10,
+  "unguarded": [],
+  "hubExternalCalls": [
+    "bank.getPayment",
+    "retail.getPO",
+    "bank.getPayment",
+    "bank.getPayment"
+  ],
+  "checks": [
+    {
+      "id": "SC01:2025",
+      "name": "Access Control Vulnerabilities",
+      "pass": true,
+      "evidence": "13 state-changing fns: onlyRole on all except finalize (permissionless by design); no tx.origin; AT-2 PASS"
+    },
+    {
+      "id": "SC02:2025",
+      "name": "Price Oracle Manipulation",
+      "pass": true,
+      "evidence": "no price oracles: amounts come from the approved PO in Module B and are cross-checked by the hub"
+    },
+    {
+      "id": "SC03:2025",
+      "name": "Logic Errors",
+      "pass": true,
+      "evidence": "state machines in 3 contracts; invariant suite PASS (300 steps, 86 successful tx, 194 reverted, 32 orders, 2 finalized)"
+    },
+    {
+      "id": "SC04:2025",
+      "name": "Lack of Input Validation",
+      "pass": true,
+      "evidence": "zero-value checks + CP-4 amount/hash cross-check; fuzz suite PASS (13 linked, 14 AmountMismatch, 13 DocHashMismatch)"
+    },
+    {
+      "id": "SC05:2025",
+      "name": "Reentrancy Attacks",
+      "pass": true,
+      "evidence": "no ETH/token transfers, no low-level calls, no payable/receive/fallback; CEI order"
+    },
+    {
+      "id": "SC06:2025",
+      "name": "Unchecked External Calls",
+      "pass": true,
+      "evidence": "hub external calls are view-only to immutable module addresses: bank.getPayment, retail.getPO"
+    },
+    {
+      "id": "SC07:2025",
+      "name": "Flash Loan Attacks",
+      "pass": true,
+      "evidence": "no balances, liquidity or token logic - not applicable"
+    },
+    {
+      "id": "SC08:2025",
+      "name": "Integer Overflow and Underflow",
+      "pass": true,
+      "evidence": "solc 0.8.28 checked arithmetic, no unchecked blocks, SafeCast for uint64 timestamps"
+    },
+    {
+      "id": "SC09:2025",
+      "name": "Insecure Randomness",
+      "pass": true,
+      "evidence": "no on-chain randomness; ids are keccak256 of business data"
+    },
+    {
+      "id": "SC10:2025",
+      "name": "Denial of Service (DoS) Attacks",
+      "pass": true,
+      "evidence": "no unbounded loops in state-changing code (O(1) mappings); pause only by admin; retries + reconciliation (AT-4)"
+    }
+  ]
+}

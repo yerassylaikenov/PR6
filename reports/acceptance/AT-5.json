@@ -1,0 +1,98 @@
+{
+  "id": "AT-5",
+  "title": "Data mismatch",
+  "expected": "AmountMismatch, R-3, not Paid; compensation; attempt 2 -> Paid",
+  "result": "PASS",
+  "actual": {
+    "orderNo": "PO-2026-000005",
+    "tamperedAmount": "3780001",
+    "poTotal": 3780000,
+    "attempt1": "Cancelled",
+    "alert": {
+      "rule": "R-3",
+      "severity": "High",
+      "key": "0x5247423401b201d5042cf27892ab58f82a9577333530ac0e17949ce8e8945d8c",
+      "correlationId": "0x5247423401b201d5042cf27892ab58f82a9577333530ac0e17949ce8e8945d8c",
+      "ts": "2026-11-06T07:14:59.885Z",
+      "message": "cross-module data mismatch AmountMismatch for order 0x5247423401… (hub refused to link)"
+    },
+    "final": {
+      "status": "Paid",
+      "attempt": 2,
+      "amount": "3780000",
+      "docHash": "0x60358bfd3350947bad46bb1f73de95add4a4e465fa214f060d36649099cef020"
+    },
+    "steps": [
+      {
+        "step": "PO created",
+        "module": "retail",
+        "txHash": "0x9f0f269f110bc9766b14ed53e8cd86b50c175323fed422b47382da10153418c7",
+        "block": "31",
+        "detail": "total 3780000 tiyn, poHash 0x60358bfd…",
+        "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+        "ts": 1793949315
+      },
+      {
+        "step": "PO approved",
+        "module": "retail",
+        "txHash": "0x325df19b48fcebc5c1522221352f065a1ff26705d73b8a4552ac3770318e7387",
+        "block": "32",
+        "actor": "0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc",
+        "ts": 1793949316
+      },
+      {
+        "step": "Payment registered",
+        "module": "bank",
+        "txHash": "0x274ff6087f1d2ad49f42499cf79c31c47e5ede2b4ce6ad86633e49894cf0616b",
+        "block": "33",
+        "detail": "amount 3780001, docHash 0x60358bfd…",
+        "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "ts": 1793949317
+      },
+      {
+        "step": "Payment status",
+        "module": "bank",
+        "txHash": "0x0fb9738eb8d01741a11d30716b17e979deb802c0ce157e0f7b52b8c39dd35af9",
+        "block": "34",
+        "detail": "Registered -> Cancelled",
+        "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "ts": 1793949318
+      },
+      {
+        "step": "Payment registered",
+        "module": "bank",
+        "txHash": "0x0124d42d024913ecb66cad393d9d431c7cab5552dad3aa81abb2b505107a05ac",
+        "block": "35",
+        "detail": "amount 3780000, docHash 0x60358bfd…",
+        "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "ts": 1793949323
+      },
+      {
+        "step": "Hub linked",
+        "module": "hub",
+        "txHash": "0xc9d78aa092aa1393c0bf11a58f0f610d95678561e2370eb7d17635de2f2fd20f",
+        "block": "36",
+        "detail": "attempt 2, amount 3780000",
+        "ts": 1793949324
+      },
+      {
+        "step": "Payment status",
+        "module": "bank",
+        "txHash": "0x1deb78fe569f8ae5ca464606ebfcd5d1471da32b10aeca80cbc04d2979d4179a",
+        "block": "37",
+        "detail": "Registered -> Executed",
+        "actor": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "ts": 1793949325
+      },
+      {
+        "step": "Hub finalized",
+        "module": "hub",
+        "txHash": "0xd9310ff352df0e0d6b717dee77bd116c6f65aa33858e759f83868f0634714cd5",
+        "block": "38",
+        "detail": "Paid",
+        "ts": 1793949326
+      }
+    ]
+  },
+  "ts": "2026-11-06T07:15:04.607Z"
+}

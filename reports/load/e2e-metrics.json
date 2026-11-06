@@ -1,0 +1,30 @@
+{
+  "ts": "2026-11-06T06:36:42.988Z",
+  "runs": 30,
+  "warmup": 2,
+  "successRate": 1,
+  "successCount": 30,
+  "discrepancies": 0,
+  "latencyMs": {
+    "p50": 478,
+    "p95": 570,
+    "min": 398,
+    "max": 654,
+    "mean": 484
+  },
+  "stagesMeanMs": {
+    "moduleB": 93,
+    "transfer": 152,
+    "moduleA": 33,
+    "finalize": 205
+  },
+  "gasMean": {
+    "createPO": 169211,
+    "approvePO": 38501,
+    "registerPayment": 101274,
+    "linkPayment": 150450,
+    "markExecuted": 61728,
+    "finalize": 69392
+  },
+  "method": "nearest-rank percentiles; clearing execution is performed by the script on behalf of the clearing center (SETTLEMENT_ROLE); timestamps by wall clock in the client; hub state polled every 20 ms"
+}

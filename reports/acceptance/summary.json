@@ -1,0 +1,78 @@
+{
+  "ts": "2026-11-06T07:15:44.892Z",
+  "passed": 7,
+  "total": 7,
+  "discrepancies": 0,
+  "orders": 7,
+  "alerts": [
+    {
+      "rule": "R-3",
+      "severity": "High",
+      "key": "0x65a6941c2c3f57108b65acf4aaa979b8f8f49aafddbb2c7a061cf304a04072eb",
+      "correlationId": "0x65a6941c2c3f57108b65acf4aaa979b8f8f49aafddbb2c7a061cf304a04072eb",
+      "ts": "2026-11-06T07:15:39.749Z",
+      "message": "cross-module discrepancy (a) PO-2026-000006: payment settled in Module A but hub not finalized for 30s"
+    },
+    {
+      "rule": "R-3",
+      "severity": "High",
+      "key": "0x5247423401b201d5042cf27892ab58f82a9577333530ac0e17949ce8e8945d8c",
+      "correlationId": "0x5247423401b201d5042cf27892ab58f82a9577333530ac0e17949ce8e8945d8c",
+      "ts": "2026-11-06T07:14:59.885Z",
+      "message": "cross-module data mismatch AmountMismatch for order 0x5247423401… (hub refused to link)"
+    },
+    {
+      "rule": "R-2",
+      "severity": "Medium",
+      "key": "global",
+      "correlationId": "0xf6a5ce0c7849e86a715459fcbd362a8cea52986e6a367a6e364e010e030e44c2",
+      "ts": "2026-11-06T07:14:52.921Z",
+      "message": "2 operational failures within 120s (last: EnforcedPause in orchestrator)"
+    },
+    {
+      "rule": "R-1",
+      "severity": "High",
+      "key": "0x976ea74026e726554db657fa54763abd0c3a0aa9",
+      "correlationId": "0x3d02bc0dbbbbd1f4b71f763b7906ce3ca9b69b5ad88055c7cb15ccad946fb530",
+      "ts": "2026-11-06T07:14:50.688Z",
+      "message": "3 access-control violations from 0x976ea74026e726554db657fa54763abd0c3a0aa9 within 60s (last: AccessControlUnauthorizedAccount)"
+    }
+  ],
+  "results": [
+    {
+      "id": "AT-1",
+      "title": "Successful process",
+      "result": "PASS"
+    },
+    {
+      "id": "AT-2",
+      "title": "Unauthorized permissions",
+      "result": "PASS"
+    },
+    {
+      "id": "AT-3",
+      "title": "Duplicate message",
+      "result": "PASS"
+    },
+    {
+      "id": "AT-4",
+      "title": "Failure of one module",
+      "result": "PASS"
+    },
+    {
+      "id": "AT-5",
+      "title": "Data mismatch",
+      "result": "PASS"
+    },
+    {
+      "id": "AT-6",
+      "title": "Recovery after failure",
+      "result": "PASS"
+    },
+    {
+      "id": "AT-7",
+      "title": "Payment rejection",
+      "result": "PASS"
+    }
+  ]
+}

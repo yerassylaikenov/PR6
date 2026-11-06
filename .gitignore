@@ -1,0 +1,14 @@
+node_modules/
+web/node_modules/
+web/dist/
+artifacts/
+cache/
+types/
+.env
+state/
+web/public/deployment.json
+data/orders/*.json
+deployments/*.json
+!deployments/.gitkeep
+_sources/
+*.log.tmp

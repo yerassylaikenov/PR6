@@ -1,0 +1,75 @@
+{
+  "id": "AT-1",
+  "title": "Successful process",
+  "expected": "Paid; amount/hash match; all steps are real tx",
+  "result": "PASS",
+  "actual": {
+    "orderNo": "PO-2026-000001",
+    "before": {
+      "po": "Created",
+      "payment": "None",
+      "hub": "None"
+    },
+    "after": {
+      "po": "Approved",
+      "payment": "Executed",
+      "hub": "Paid"
+    },
+    "registrationLatencyMs": 231,
+    "endToEndMs": 928,
+    "steps": [
+      {
+        "step": "PO created",
+        "module": "retail",
+        "txHash": "0x4193ac79e4e3dbe89e7c585b8af07b84b64dda903b981ca15bf76c3f5182aa53",
+        "block": "10",
+        "detail": "total 7450000 tiyn, poHash 0xf32ed45b…",
+        "actor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+        "ts": 1793949290
+      },
+      {
+        "step": "PO approved",
+        "module": "retail",
+        "txHash": "0x33ad3f5feaa339240b62c19ae85b246d1a30a9027d32d577658a9eb111055ee7",
+        "block": "11",
+        "actor": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+        "ts": 1793949291
+      },
+      {
+        "step": "Payment registered",
+        "module": "bank",
+        "txHash": "0xca9f5eedf0d6e6c86d1bafac6acf9c14f29fca667ac075f3f3fbe9337145f810",
+        "block": "12",
+        "detail": "amount 7450000, docHash 0xf32ed45b…",
+        "actor": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "ts": 1793949292
+      },
+      {
+        "step": "Hub linked",
+        "module": "hub",
+        "txHash": "0xd0797c87e80562d2c0b8a1da09875a48973c384b793b5b7b184cf59fa6a5b015",
+        "block": "13",
+        "detail": "attempt 1, amount 7450000",
+        "ts": 1793949293
+      },
+      {
+        "step": "Payment status",
+        "module": "bank",
+        "txHash": "0x7589cf435d243d7330abdb8a76709dca565dbc871d2207fddd72c76f2d383afb",
+        "block": "14",
+        "detail": "Registered -> Executed",
+        "actor": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "ts": 1793949294
+      },
+      {
+        "step": "Hub finalized",
+        "module": "hub",
+        "txHash": "0xe9c41cec37a5813ccf225a5c40cf8d864b9b0ed50ed387a651714cc4ac30ef7b",
+        "block": "15",
+        "detail": "Paid",
+        "ts": 1793949295
+      }
+    ]
+  },
+  "ts": "2026-11-06T07:14:50.453Z"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "AT-7",
+  "title": "Payment rejection",
+  "expected": "PaymentFailed, statuses consistent",
+  "result": "PASS",
+  "actual": {
+    "orderNo": "PO-2026-000007",
+    "after": {
+      "po": "Approved",
+      "payment": "Rejected",
+      "hub": "PaymentFailed"
+    }
+  },
+  "ts": "2026-11-06T07:15:43.977Z"
+}

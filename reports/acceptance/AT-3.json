@@ -1,0 +1,18 @@
+{
+  "id": "AT-3",
+  "title": "Duplicate message",
+  "expected": "one payment; AlreadyLinked; result unchanged",
+  "result": "PASS",
+  "actual": {
+    "orderNo": "PO-2026-000003",
+    "directLinkError": "AlreadyLinked",
+    "payments": 1,
+    "executeTx": "0x4ca36104b23ea5c9e19986f9a6454121178fbd49c13f40a77647aa2d3578df13",
+    "after": {
+      "po": "Approved",
+      "payment": "Executed",
+      "hub": "Paid"
+    }
+  },
+  "ts": "2026-11-06T07:14:51.513Z"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "AT-4",
+  "title": "Failure of one module",
+  "expected": "auto recovery to Paid, R-2, no duplicates",
+  "result": "PASS",
+  "actual": {
+    "orderNo": "PO-2026-000004",
+    "alert": {
+      "rule": "R-2",
+      "severity": "Medium",
+      "key": "global",
+      "correlationId": "0xf6a5ce0c7849e86a715459fcbd362a8cea52986e6a367a6e364e010e030e44c2",
+      "ts": "2026-11-06T07:14:52.921Z",
+      "message": "2 operational failures within 120s (last: EnforcedPause in orchestrator)"
+    },
+    "recoveryMs": 2328,
+    "payments": 1,
+    "during": {
+      "po": "Approved",
+      "payment": "None",
+      "hub": "None"
+    },
+    "after": {
+      "po": "Approved",
+      "payment": "Executed",
+      "hub": "Paid"
+    }
+  },
+  "ts": "2026-11-06T07:14:55.381Z"
+}

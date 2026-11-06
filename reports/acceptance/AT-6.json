@@ -1,0 +1,25 @@
+{
+  "id": "AT-6",
+  "title": "Recovery after failure",
+  "expected": "reconciliation -> Paid <= 60 s, no duplicates, R-3",
+  "result": "PASS",
+  "actual": {
+    "orderNo": "PO-2026-000006",
+    "alert": {
+      "rule": "R-3",
+      "severity": "High",
+      "key": "0x65a6941c2c3f57108b65acf4aaa979b8f8f49aafddbb2c7a061cf304a04072eb",
+      "correlationId": "0x65a6941c2c3f57108b65acf4aaa979b8f8f49aafddbb2c7a061cf304a04072eb",
+      "ts": "2026-11-06T07:15:39.749Z",
+      "message": "cross-module discrepancy (a) PO-2026-000006: payment settled in Module A but hub not finalized for 30s"
+    },
+    "recoveryMs": 3542,
+    "payments": 1,
+    "after": {
+      "po": "Approved",
+      "payment": "Executed",
+      "hub": "Paid"
+    }
+  },
+  "ts": "2026-11-06T07:15:43.382Z"
+}

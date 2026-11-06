@@ -1,0 +1,86 @@
+
+UNIFIED MONITOR (retail + bank + hub + orchestrator + web)
+✔  HTTP collector http://127.0.0.1:8797  (POST /log, GET /alerts, GET /health)
+✔  telemetry -> .\reports\acceptance\monitoring\telemetry.jsonl
+✔  rules: R-1 access violation (High) | R-2 operational failure (Medium) | R-3 cross-module discrepancy (High)
+  correlationId = orderId; R-3 delay 30s; cooldown 5 min per rule+key
+07:14:46 ● bank         RoleGranted                success 
+07:14:46 ● bank         RoleGranted                success 
+07:14:46 ● bank         RoleGranted                success 
+07:14:46 ● retail       RoleGranted                success 
+07:14:46 ● retail       RoleGranted                success 
+07:14:46 ● retail       RoleGranted                success 
+07:14:46 ● retail       RoleGranted                success 
+07:14:46 ● hub          RoleGranted                success 
+07:14:46 ● hub          RoleGranted                success 
+07:14:50 ● orchestrator REGISTER_PAYMENT           success 0x0135d84594
+07:14:50 ● orchestrator LINK                       success 0x0135d84594
+07:14:50 ● orchestrator FINALIZE                   success 0x0135d84594
+07:14:50 ● bank         PaymentRegistered          success 0x4e8a25c13d
+07:14:50 ● bank         PaymentStatusChanged       success 0x4e8a25c13d
+07:14:50 ● web          retail.approvePO           reverted AccessControlUnauthorizedAccount 0x3d02bc0dbb
+07:14:50 ● retail       PurchaseOrderCreated       success 0x0135d84594
+07:14:50 ● retail       PurchaseOrderApproved      success 0x0135d84594
+07:14:50 ● retail       PurchaseOrderCreated       success 0x3d02bc0dbb
+07:14:50 ● hub          OrderPaymentLinked         success 0x0135d84594
+07:14:50 ● hub          OrderFinalized             success 0x0135d84594
+07:14:50 ● web          retail.approvePO           reverted NotOrderSupplier 0x3d02bc0dbb
+07:14:50 ● web          bank.registerPayment       reverted AccessControlUnauthorizedAccount 0x3d02bc0dbb
+07:14:50 ● web          hub.linkPayment            reverted AccessControlUnauthorizedAccount 0x3d02bc0dbb
+ ALERT R-1 [HIGH]  3 access-control violations from 0x976ea74026e726554db657fa54763abd0c3a0aa9 within 60s (last: AccessControlUnauthorizedAccount)
+07:14:50 ● web          bank.markExecuted          reverted AccessControlUnauthorizedAccount 0x3d02bc0dbb
+07:14:51 ● orchestrator REGISTER_PAYMENT           success 0x8638dbfb5f
+07:14:51 ● orchestrator LINK                       success 0x8638dbfb5f
+07:14:51 ● orchestrator FINALIZE                   success 0x8638dbfb5f
+07:14:51 ● bank         PaymentRegistered          success 0xe38a6b119e
+07:14:51 ● bank         PaymentStatusChanged       success 0xe38a6b119e
+07:14:51 ● bank         Paused                     success 
+07:14:51 ● retail       PurchaseOrderCreated       success 0x8638dbfb5f
+07:14:51 ● retail       PurchaseOrderApproved      success 0x8638dbfb5f
+07:14:51 ● hub          OrderPaymentLinked         success 0x8638dbfb5f
+07:14:51 ● hub          OrderFinalized             success 0x8638dbfb5f
+07:14:51 ● orchestrator REGISTER_PAYMENT           error EnforcedPause 0xf6a5ce0c78
+07:14:52 ● retail       PurchaseOrderCreated       success 0xf6a5ce0c78
+07:14:52 ● retail       PurchaseOrderApproved      success 0xf6a5ce0c78
+07:14:52 ● orchestrator REGISTER_PAYMENT           error EnforcedPause 0xf6a5ce0c78
+ ALERT R-2 [MEDIUM]  2 operational failures within 120s (last: EnforcedPause in orchestrator)
+07:14:53 ● bank         Unpaused                   success 
+07:14:54 ● orchestrator REGISTER_PAYMENT           success 0xf6a5ce0c78
+07:14:54 ● orchestrator LINK                       success 0xf6a5ce0c78
+07:14:55 ● orchestrator FINALIZE                   success 0xf6a5ce0c78
+07:14:55 ● bank         PaymentRegistered          success 0x40bcd0f4aa
+07:14:55 ● bank         PaymentStatusChanged       success 0x40bcd0f4aa
+07:14:55 ● hub          OrderPaymentLinked         success 0xf6a5ce0c78
+07:14:55 ● hub          OrderFinalized             success 0xf6a5ce0c78
+07:14:59 ● orchestrator REGISTER_PAYMENT           success 0x5247423401
+07:14:59 ● orchestrator LINK                       reverted AmountMismatch 0x5247423401
+ ALERT R-3 [HIGH]  cross-module data mismatch AmountMismatch for order 0x5247423401… (hub refused to link)
+07:14:59 ● orchestrator COMPENSATE                 success 0x5247423401
+07:15:00 ● bank         PaymentRegistered          success 0x606b28600b
+07:15:00 ● bank         PaymentStatusChanged       success 0x606b28600b
+07:15:00 ● retail       PurchaseOrderCreated       success 0x5247423401
+07:15:00 ● retail       PurchaseOrderApproved      success 0x5247423401
+07:15:04 ● orchestrator REGISTER_PAYMENT           success 0x5247423401
+07:15:04 ● orchestrator LINK                       success 0x5247423401
+07:15:04 ● orchestrator FINALIZE                   success 0x5247423401
+07:15:04 ● bank         PaymentRegistered          success 0x803c4b7c4e
+07:15:04 ● bank         PaymentStatusChanged       success 0x803c4b7c4e
+07:15:04 ● hub          OrderPaymentLinked         success 0x5247423401
+07:15:04 ● hub          OrderFinalized             success 0x5247423401
+07:15:09 ● bank         PaymentRegistered          success 0x32a976ef7d
+07:15:09 ● bank         PaymentStatusChanged       success 0x32a976ef7d
+07:15:09 ● retail       PurchaseOrderCreated       success 0x65a6941c2c
+07:15:09 ● retail       PurchaseOrderApproved      success 0x65a6941c2c
+ ALERT R-3 [HIGH]  cross-module discrepancy (a) PO-2026-000006: payment settled in Module A but hub not finalized for 30s
+07:15:43 ● orchestrator LINK                       success 0x65a6941c2c
+07:15:43 ● orchestrator FINALIZE                   success 0x65a6941c2c
+07:15:43 ● orchestrator REGISTER_PAYMENT           success 0xb351e9036c
+07:15:43 ● orchestrator LINK                       success 0xb351e9036c
+07:15:43 ● bank         PaymentRegistered          success 0x5e4ff55257
+07:15:43 ● bank         PaymentStatusChanged       success 0x5e4ff55257
+07:15:43 ● retail       PurchaseOrderCreated       success 0xb351e9036c
+07:15:43 ● retail       PurchaseOrderApproved      success 0xb351e9036c
+07:15:43 ● hub          OrderPaymentLinked         success 0x65a6941c2c
+07:15:43 ● hub          OrderFinalized             success 0x65a6941c2c
+07:15:43 ● hub          OrderPaymentLinked         success 0xb351e9036c
+07:15:43 ● orchestrator FINALIZE                   success 0xb351e9036c

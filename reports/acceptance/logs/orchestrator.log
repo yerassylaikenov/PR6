@@ -1,0 +1,72 @@
+
+INTEGRATION ORCHESTRATOR (Module B -> Module A -> Hub)
+✔  retail 0xe7f1725e7734ce288f8367e1bb143e90bb3f0512
+✔  bank   0x5fbdb2315678afecb367f032d93f642f64180aa3
+✔  hub    0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0
+✔  read-only API http://127.0.0.1:8798  (GET /health, /orders, /orders/:orderNo)
+  rules: PO Approved -> registerPayment + hub.linkPayment;  PaymentStatusChanged -> hub.finalize
+✔  startup reconciliation done (CP-6)
+✔  listening for PurchaseOrderApproved / PaymentStatusChanged (polling 250 ms)
+[07:14:50] PO-2026-000001 ✔  REGISTER_PAYMENT attempt 1 amount 7450000 docHash 0xf32ed45b… tx 0xca9f5eedf0d6… block 12 (event PurchaseOrderApproved)
+[07:14:50] PO-2026-000001 ✔  LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0xd0797c87e805… block 13
+[07:14:50] PO-2026-000001 ✔  FINALIZE hub.finalize -> Paid tx 0xe9c41cec37a5… block 15
+[07:14:51] PO-2026-000003 ✔  REGISTER_PAYMENT attempt 1 amount 2040000 docHash 0xf7e1077a… tx 0xffccd36f1010… block 19 (event PurchaseOrderApproved)
+[07:14:51] PO-2026-000003 ✔  LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x850c382b28e1… block 20
+[07:14:51] PO-2026-000003 ✔  FINALIZE hub.finalize -> Paid tx 0xee02596e693b… block 22
+[07:14:51] PO-2026-000004 ↻  REGISTER_PAYMENT failed with EnforcedPause, retry 1/4 in 1s
+[07:14:52] PO-2026-000004 ↻  REGISTER_PAYMENT failed with EnforcedPause, retry 2/4 in 2s
+[07:14:54] PO-2026-000004 ✔  REGISTER_PAYMENT attempt 1 amount 3120000 docHash 0x4f250f39… tx 0x0d639f2dd021… block 27 (event PurchaseOrderApproved)
+[07:14:54] PO-2026-000004 ✔  LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x68b6006a5601… block 28
+[07:14:55] PO-2026-000004 ✔  FINALIZE hub.finalize -> Paid tx 0x8f4cbfba382e… block 30
+
+INTEGRATION ORCHESTRATOR (Module B -> Module A -> Hub)
+✔  retail 0xe7f1725e7734ce288f8367e1bb143e90bb3f0512
+✔  bank   0x5fbdb2315678afecb367f032d93f642f64180aa3
+✔  hub    0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0
+FAULT_TAMPER_AMOUNT=1 (acceptance test only)
+✔  read-only API http://127.0.0.1:8798  (GET /health, /orders, /orders/:orderNo)
+  rules: PO Approved -> registerPayment + hub.linkPayment;  PaymentStatusChanged -> hub.finalize
+✔  startup reconciliation done (CP-6)
+✔  listening for PurchaseOrderApproved / PaymentStatusChanged (polling 250 ms)
+[07:14:59] PO-2026-000005 ✔  REGISTER_PAYMENT attempt 1 amount 3780001 docHash 0x60358bfd… tx 0x274ff6087f1d… block 33 (event PurchaseOrderApproved)
+[07:14:59] PO-2026-000005 ✘  LINK rejected by hub: AmountMismatch -> R-3, compensation: cancelPayment(attempt 1)
+[07:14:59] PO-2026-000005 ↺  COMPENSATE cancelPayment tx 0x0fb9738eb8d0… block 34
+
+INTEGRATION ORCHESTRATOR (Module B -> Module A -> Hub)
+✔  retail 0xe7f1725e7734ce288f8367e1bb143e90bb3f0512
+✔  bank   0x5fbdb2315678afecb367f032d93f642f64180aa3
+✔  hub    0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0
+✔  read-only API http://127.0.0.1:8798  (GET /health, /orders, /orders/:orderNo)
+  rules: PO Approved -> registerPayment + hub.linkPayment;  PaymentStatusChanged -> hub.finalize
+[07:15:04] PO-2026-000005 ✔  REGISTER_PAYMENT attempt 2 amount 3780000 docHash 0x60358bfd… tx 0x0124d42d0249… block 35 (startup reconcile)
+[07:15:04] PO-2026-000005 ✔  LINK hub.linkPayment attempt 2 -> AwaitingPayment tx 0xc9d78aa092aa… block 36
+✔  startup reconciliation done (CP-6)
+✔  listening for PurchaseOrderApproved / PaymentStatusChanged (polling 250 ms)
+[07:15:04] PO-2026-000005 ✔  FINALIZE hub.finalize -> Paid tx 0xd9310ff352df… block 38
+
+INTEGRATION ORCHESTRATOR (Module B -> Module A -> Hub)
+✔  retail 0xe7f1725e7734ce288f8367e1bb143e90bb3f0512
+✔  bank   0x5fbdb2315678afecb367f032d93f642f64180aa3
+✔  hub    0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0
+FAULT_CRASH_AFTER=REGISTER_PAYMENT (acceptance test only)
+✔  read-only API http://127.0.0.1:8798  (GET /health, /orders, /orders/:orderNo)
+  rules: PO Approved -> registerPayment + hub.linkPayment;  PaymentStatusChanged -> hub.finalize
+✔  startup reconciliation done (CP-6)
+✔  listening for PurchaseOrderApproved / PaymentStatusChanged (polling 250 ms)
+[07:15:09] PO-2026-000006 ✔  REGISTER_PAYMENT attempt 1 amount 2100000 docHash 0xf2ff320f… tx 0x494861921a42… block 41 (event PurchaseOrderApproved)
+[07:15:09] PO-2026-000006 ✘  FAULT_CRASH_AFTER=REGISTER_PAYMENT -> orchestrator process exits now
+
+INTEGRATION ORCHESTRATOR (Module B -> Module A -> Hub)
+✔  retail 0xe7f1725e7734ce288f8367e1bb143e90bb3f0512
+✔  bank   0x5fbdb2315678afecb367f032d93f642f64180aa3
+✔  hub    0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0
+✔  read-only API http://127.0.0.1:8798  (GET /health, /orders, /orders/:orderNo)
+  rules: PO Approved -> registerPayment + hub.linkPayment;  PaymentStatusChanged -> hub.finalize
+[07:15:43] PO-2026-000006 •  REGISTER_PAYMENT attempt 1 already on-chain - skipped (idempotent)
+[07:15:43] PO-2026-000006 ✔  LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0xe5f411e3bfb6… block 43
+[07:15:43] PO-2026-000006 ✔  FINALIZE hub.finalize -> Paid tx 0x4443b1c953ee… block 44
+✔  startup reconciliation done (CP-6)
+✔  listening for PurchaseOrderApproved / PaymentStatusChanged (polling 250 ms)
+[07:15:43] PO-2026-000007 ✔  REGISTER_PAYMENT attempt 1 amount 3600000 docHash 0x161fe62a… tx 0x6ac81219b45b… block 47 (event PurchaseOrderApproved)
+[07:15:43] PO-2026-000007 ✔  LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x562505951807… block 48
+[07:15:43] PO-2026-000007 ✔  FINALIZE hub.finalize -> PaymentFailed tx 0xaca877600a25… block 50

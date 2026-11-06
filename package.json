@@ -1,0 +1,48 @@
+{
+  "name": "pr6-b2b-procurement-mvp",
+  "private": true,
+  "version": "1.0.0",
+  "description": "PR6 MVP: B2B procurement marketplace with bank payment (Module A: Banking & FinTech + Module B: Retail).",
+  "type": "module",
+  "engines": {
+    "node": ">=22.10.0"
+  },
+  "scripts": {
+    "compile": "hardhat compile",
+    "node": "hardhat node",
+    "deploy:all": "tsx scripts/deploy-all.ts",
+    "seed": "tsx scripts/seed.ts",
+    "orchestrator": "tsx orchestrator/index.ts",
+    "monitor": "tsx monitor/collector.ts",
+    "web": "npm --prefix web run dev",
+    "demo:up": "node scripts/demo-up.mjs",
+    "demo:e2e": "tsx scripts/demo-e2e.ts",
+    "trace": "tsx scripts/trace.ts",
+    "reconcile": "tsx orchestrator/reconcile.ts",
+    "test": "hardhat test nodejs",
+    "test:report": "node scripts/run-tests.mjs",
+    "owasp": "node scripts/owasp-check.mjs",
+    "acceptance": "tsx scripts/acceptance.ts",
+    "load:e2e": "tsx loadtest/e2e-run.ts && node loadtest/charts.mjs",
+    "check:secrets": "node scripts/check-secrets.mjs",
+    "ci:local": "node scripts/ci-local.mjs",
+    "show": "node scripts/show-results.mjs all",
+    "report:data": "node scripts/report-data.mjs",
+    "admin": "tsx scripts/admin.ts",
+    "screenshots": "powershell -ExecutionPolicy Bypass -File scripts/take-screenshots.ps1",
+    "demo:reset": "node scripts/reset.mjs"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-network-helpers": "3.0.11",
+    "@nomicfoundation/hardhat-node-test-runner": "3.1.0",
+    "@nomicfoundation/hardhat-toolbox-viem": "5.0.7",
+    "@openzeppelin/contracts": "5.6.1",
+    "@types/node": "22.20.5",
+    "concurrently": "9.1.2",
+    "hardhat": "3.18.1",
+    "playwright-core": "1.49.1",
+    "tsx": "4.20.3",
+    "typescript": "6.0.3",
+    "viem": "2.57.3"
+  }
+}

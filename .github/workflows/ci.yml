@@ -1,0 +1,52 @@
+name: PR6 CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm --prefix web ci
+      - name: Compile contracts
+        run: npx hardhat compile
+      - name: Unit (hub) + fuzz + invariant + PR5 bank tests
+        run: node scripts/run-tests.mjs
+      - name: OWASP Smart Contract Top 10 (2025) check
+        run: node scripts/owasp-check.mjs
+      - name: Integration on a live stand (AT-1..AT-7)
+        run: npx tsx scripts/acceptance.ts
+      - name: Secrets scan
+        run: node scripts/check-secrets.mjs
+      - name: npm audit (production dependencies)
+        run: |
+          npm audit --omit=dev --audit-level=high
+          npm --prefix web audit --omit=dev --audit-level=high
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reports
+          path: reports/
+
+  slither:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci
+      - uses: crytic/slither-action@v0.4.0
+        with:
+          target: contracts/
+          solc-version: 0.8.28
+          slither-args: --solc-remaps "@openzeppelin/=node_modules/@openzeppelin/"
+          fail-on: none

@@ -1,0 +1,155 @@
+{
+  "ts": "2026-11-06T07:16:05.403Z",
+  "durationMs": 14993,
+  "exitCode": 0,
+  "passing": 31,
+  "failing": 0,
+  "fuzz": "fuzz: 13 linked, 14 AmountMismatch, 13 DocHashMismatch",
+  "invariants": "invariants: 300 steps, 86 successful tx, 194 reverted, 32 orders, 2 finalized",
+  "suites": {
+    "Access control — negative": [
+      {
+        "name": "4) outsider calling registerPayment reverts (AccessControlUnauthorizedAccount); state unchanged (SC01)",
+        "pass": true
+      },
+      {
+        "name": "5) a role holder settling their OWN payment reverts (SelfSettlementForbidden) (SC01/SC03)",
+        "pass": true
+      },
+      {
+        "name": "extra) pause() by a non-admin reverts (SC01/SC10)",
+        "pass": true
+      }
+    ],
+    "Emergency pause (SC10)": [
+      {
+        "name": "9) pause() blocks writes (EnforcedPause); unpause() restores them",
+        "pass": true
+      }
+    ],
+    "Payment flow — positive": [
+      {
+        "name": "1) register -> markExecuted updates state and emits correct events (SC03)",
+        "pass": true
+      },
+      {
+        "name": "2) register -> markRejected stores the reason code (SC03)",
+        "pass": true
+      },
+      {
+        "name": "3) register -> cancelPayment by the initiator (SC03)",
+        "pass": true
+      },
+      {
+        "name": "8) a reverted tx emits NO event; range query has no duplicates (SC03)",
+        "pass": true
+      }
+    ],
+    "Invariants under random sequences (SC01/SC03)": [
+      {
+        "name": "INV-1..INV-3 hold after 60 randomized steps",
+        "pass": true
+      }
+    ],
+    "Property: stored data round-trips and verifyDocument is exact (SC04/SC08)": [
+      {
+        "name": "P1) exact storage + verifyDocument over random inputs and boundaries",
+        "pass": true
+      }
+    ],
+    "Property: unprivileged accounts cannot write (SC01)": [
+      {
+        "name": "P2) every write reverts for random role-less accounts; state unchanged",
+        "pass": true
+      }
+    ],
+    "State machine & input validation — negative": [
+      {
+        "name": "6) final status is terminal (InvalidStatusTransition) and paymentId is not reusable (PaymentAlreadyExists) (SC03)",
+        "pass": true
+      },
+      {
+        "name": "7) zero inputs are rejected: InvalidPaymentId / InvalidDocHash / InvalidAmount / InvalidReasonCode (SC04)",
+        "pass": true
+      }
+    ],
+    "Fuzz tests (seed 20261106, 40 runs each)": [
+      {
+        "name": "linkPayment accepts iff amount and hash match (random uint128 amounts and hashes)",
+        "pass": true
+      },
+      {
+        "name": "random unprivileged callers can never change state of any module",
+        "pass": true
+      },
+      {
+        "name": "createPO input validation rejects zero id / zero hash / zero total / non-supplier",
+        "pass": true
+      },
+      {
+        "name": "paymentId derivation is unique per (orderId, attempt): no collisions in random sample",
+        "pass": true
+      }
+    ],
+    "Invariant tests (seed 6062026, 300 random steps)": [
+      {
+        "name": "cross-module invariants hold after every random operation",
+        "pass": true
+      }
+    ],
+    "OrderSettlementHub - unit": [
+      {
+        "name": "links a payment with matching amount and hash (AwaitingPayment)",
+        "pass": true
+      },
+      {
+        "name": "reverts AmountMismatch when payment amount differs from PO total",
+        "pass": true
+      },
+      {
+        "name": "reverts DocHashMismatch when payment docHash differs from poHash",
+        "pass": true
+      },
+      {
+        "name": "reverts AlreadyLinked on a repeated link of the same attempt",
+        "pass": true
+      },
+      {
+        "name": "reverts AccessControlUnauthorizedAccount when linking without ORCHESTRATOR_ROLE",
+        "pass": true
+      },
+      {
+        "name": "reverts PONotApproved when the PO is not approved by the supplier",
+        "pass": true
+      },
+      {
+        "name": "reverts NotSettledYet when finalizing before settlement",
+        "pass": true
+      },
+      {
+        "name": "finalize -> Paid after markExecuted (anyone may call finalize)",
+        "pass": true
+      },
+      {
+        "name": "finalize -> PaymentFailed after markRejected",
+        "pass": true
+      },
+      {
+        "name": "reverts AlreadyFinalized on repeated finalize and on link after Paid",
+        "pass": true
+      },
+      {
+        "name": "reverts NotLinked when finalizing an unknown order",
+        "pass": true
+      },
+      {
+        "name": "allows attempt 2 only after the previous payment was cancelled (compensation)",
+        "pass": true
+      },
+      {
+        "name": "pause blocks linkPayment (EnforcedPause), only admin can pause",
+        "pass": true
+      }
+    ]
+  }
+}

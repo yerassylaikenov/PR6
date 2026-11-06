@@ -1,0 +1,32 @@
+
+DEMO E2E - B2B procurement with bank payment (fully automatic)
+✔  orchestrator is running (GET /health)
+✔  STEP 1 [Module B] retailer createPO PO-2026-000003  total 15890000 tiyn (158,900 KZT)
+  tx 0x97fde99e2a9cec39632f5b69e319d3bfb9eeac9f01fc60a37fa20fc915e64262  block 22  gas 169213  poHash 0x9392dc5a0e8e78f7ebf1e3a6dfe9ba4e64c0135966ef911ddf031d616c58ce97
+✔  STEP 2 [Module B] supplier approvePO
+  tx 0xdcf22f344842488dd65776ef0f02d1973b3de283141921633b4f21f659745ca0  block 23  gas 38502
+✔  STEP 3 [auto B->A] orchestrator registered payment automatically in 124 ms (K1 limit 10 000 ms)
+  paymentId 0xe38a6b119eb230ff022321db39a3bad575473c942d3876cc5a85a4eb49a177a9  amount 15890000  docHash 0x9392dc5a0e8e78f7…
+✔  STEP 3b [auto] hub.linkPayment -> AwaitingPayment (hub cross-checked amount and hash on-chain)
+✔  STEP 4 [Module A] clearing center markExecuted
+  tx 0x23d2694d27ff309c670210d5e9cc4bb8c23be7ac9fa7d9b253549796b0740b9d  block 26  gas 61730
+✔  STEP 5 [auto A->Hub] orchestrator hub.finalize -> Paid  (end-to-end 720 ms)
+
+Transaction chain (from blockchain events)
+  ✔  retail  PO created           block   22  0x97fde99e2a9cec39632f5b69e319d3bfb9eeac9f01fc60a37fa20fc915e64262  total 15890000 tiyn, poHash 0x9392dc5a…
+  ✔  retail  PO approved          block   23  0xdcf22f344842488dd65776ef0f02d1973b3de283141921633b4f21f659745ca0  
+  ✔  bank    Payment registered   block   24  0x2b7dec3cfefd5e0ec695cf164f49654cfb94628f695f0f31fa35710928d85a22  amount 15890000, docHash 0x9392dc5a…
+  ✔  hub     Hub linked           block   25  0xc73d49f6011b87441857dc9633e76f976d8fc2537552c397d691e87b83e456be  attempt 1, amount 15890000
+  ✔  bank    Payment status       block   26  0x23d2694d27ff309c670210d5e9cc4bb8c23be7ac9fa7d9b253549796b0740b9d  Registered -> Executed
+  ✔  hub     Hub finalized        block   27  0xf0927231a6071b4a15ae331bc7d8172a70e7d30c671fd6943ff814a399cb08b6  Paid
+
+State of the three contracts
+  Module B (retail) PO status      : Approved   total 15890000
+  Module A (bank)   payment status : Executed   amount 15890000
+  Hub               order status   : Paid
+✔  PO total == payment amount
+✔  poHash == payment docHash
+✔  bank.verifyDocument(paymentId, keccak256(PO JSON)) == true
+✔  no manual transfer of amount or hash: the orchestrator read them from Module B on-chain
+
+E2E SCENARIO PASSED - order PO-2026-000003 is Paid

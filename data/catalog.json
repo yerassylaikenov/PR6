@@ -1,0 +1,20 @@
+{
+  "currency": "KZT",
+  "unitsNote": "unitPurchasePrice in tiyn (1 KZT = 100 tiyn)",
+  "suppliers": [
+    { "key": "supplier1", "name": "Agro-Opt LLP" },
+    { "key": "supplier2", "name": "Fresh Products LLP" }
+  ],
+  "items": [
+    { "sku": "AGR-001", "name": "Wheat flour 1st grade, 50 kg", "unit": "bag", "supplier": "supplier1", "unitPurchasePrice": 1250000 },
+    { "sku": "AGR-002", "name": "Buckwheat, 25 kg", "unit": "bag", "supplier": "supplier1", "unitPurchasePrice": 1480000 },
+    { "sku": "AGR-003", "name": "Sugar, 50 kg", "unit": "bag", "supplier": "supplier1", "unitPurchasePrice": 2100000 },
+    { "sku": "AGR-004", "name": "Sunflower oil, 5 L", "unit": "bottle", "supplier": "supplier1", "unitPurchasePrice": 520000 },
+    { "sku": "AGR-005", "name": "Rice long-grain, 25 kg", "unit": "bag", "supplier": "supplier1", "unitPurchasePrice": 1650000 },
+    { "sku": "FRS-001", "name": "Milk 3.2%, 1 L (box of 12)", "unit": "box", "supplier": "supplier2", "unitPurchasePrice": 540000 },
+    { "sku": "FRS-002", "name": "Kefir 2.5%, 1 L (box of 12)", "unit": "box", "supplier": "supplier2", "unitPurchasePrice": 510000 },
+    { "sku": "FRS-003", "name": "Butter 72.5%, 5 kg", "unit": "pack", "supplier": "supplier2", "unitPurchasePrice": 1890000 },
+    { "sku": "FRS-004", "name": "Chicken eggs C1 (tray of 30)", "unit": "tray", "supplier": "supplier2", "unitPurchasePrice": 165000 },
+    { "sku": "FRS-005", "name": "Apples Aport, 10 kg", "unit": "crate", "supplier": "supplier2", "unitPurchasePrice": 450000 }
+  ]
+}

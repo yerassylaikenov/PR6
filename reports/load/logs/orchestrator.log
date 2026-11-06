@@ -1,0 +1,105 @@
+
+INTEGRATION ORCHESTRATOR (Module B -> Module A -> Hub)
+✔ retail 0xe7f1725e7734ce288f8367e1bb143e90bb3f0512
+✔ bank   0x5fbdb2315678afecb367f032d93f642f64180aa3
+✔ hub    0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0
+✔ read-only API http://127.0.0.1:8808  (GET /health, /orders, /orders/:orderNo)
+  rules: PO Approved -> registerPayment + hub.linkPayment;  PaymentStatusChanged -> hub.finalize
+✔ startup reconciliation done (CP-6)
+✔ listening for PurchaseOrderApproved / PaymentStatusChanged (polling 250 ms)
+[06:36:25] PO-2026-000001 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x7f655a31… tx 0xee8e1c662f63… block 12 (event PurchaseOrderApproved)
+[06:36:25] PO-2026-000001 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0xb18a8aee4ca4… block 13
+[06:36:25] PO-2026-000001 ✔ FINALIZE hub.finalize -> Paid tx 0xd9d769bd7e2a… block 15
+[06:36:25] PO-2026-000002 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0xcf06fd67… tx 0x3905591ab45a… block 18 (event PurchaseOrderApproved)
+[06:36:25] PO-2026-000002 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x646b679c45f6… block 19
+[06:36:26] PO-2026-000002 ✔ FINALIZE hub.finalize -> Paid tx 0xba8c183095cf… block 21
+[06:36:26] PO-2026-000003 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0xe179b0e5… tx 0xac9f5be5447d… block 24 (event PurchaseOrderApproved)
+[06:36:26] PO-2026-000003 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x9c4892dc9667… block 25
+[06:36:26] PO-2026-000003 ✔ FINALIZE hub.finalize -> Paid tx 0x55b86095636a… block 27
+[06:36:26] PO-2026-000004 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x2de59eae… tx 0x1b127a16dca7… block 30 (event PurchaseOrderApproved)
+[06:36:26] PO-2026-000004 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x88f4b8c16965… block 31
+[06:36:27] PO-2026-000004 ✔ FINALIZE hub.finalize -> Paid tx 0x427989a06d9e… block 33
+[06:36:27] PO-2026-000005 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x83601530… tx 0x5a2d56115ee6… block 36 (event PurchaseOrderApproved)
+[06:36:27] PO-2026-000005 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x083c7b3610bd… block 37
+[06:36:27] PO-2026-000005 ✔ FINALIZE hub.finalize -> Paid tx 0x0c8411910d47… block 39
+[06:36:28] PO-2026-000006 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x7aa3bff0… tx 0x55a6f839ce00… block 42 (event PurchaseOrderApproved)
+[06:36:28] PO-2026-000006 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x73fb7960b457… block 43
+[06:36:28] PO-2026-000006 ✔ FINALIZE hub.finalize -> Paid tx 0x1d485a8faf4f… block 45
+[06:36:28] PO-2026-000007 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x59d3b6cb… tx 0xff2184da309f… block 48 (event PurchaseOrderApproved)
+[06:36:28] PO-2026-000007 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x57958a21ae8d… block 49
+[06:36:28] PO-2026-000007 ✔ FINALIZE hub.finalize -> Paid tx 0x3e177a3e3b16… block 51
+[06:36:29] PO-2026-000008 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0xe36f0506… tx 0x46d506d9cafe… block 54 (event PurchaseOrderApproved)
+[06:36:29] PO-2026-000008 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x22514d9d0834… block 55
+[06:36:29] PO-2026-000008 ✔ FINALIZE hub.finalize -> Paid tx 0x3fedb61b1d3c… block 57
+[06:36:29] PO-2026-000009 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0xc8e9805b… tx 0x6175efbd5630… block 60 (event PurchaseOrderApproved)
+[06:36:29] PO-2026-000009 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x6b3eeb22e8b6… block 61
+[06:36:29] PO-2026-000009 ✔ FINALIZE hub.finalize -> Paid tx 0x904e9e80b5b1… block 63
+[06:36:30] PO-2026-000010 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x6d66bc88… tx 0x64be90008c47… block 66 (event PurchaseOrderApproved)
+[06:36:30] PO-2026-000010 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x4e028cdf288c… block 67
+[06:36:30] PO-2026-000010 ✔ FINALIZE hub.finalize -> Paid tx 0xff8c8a87e261… block 69
+[06:36:30] PO-2026-000011 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x26c84d6d… tx 0x2cc4cb4b6a60… block 72 (event PurchaseOrderApproved)
+[06:36:30] PO-2026-000011 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0xc3c887de29ce… block 73
+[06:36:31] PO-2026-000011 ✔ FINALIZE hub.finalize -> Paid tx 0x6a582eb916bf… block 75
+[06:36:31] PO-2026-000012 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x81185b3a… tx 0x83a6fedd6b0a… block 78 (event PurchaseOrderApproved)
+[06:36:31] PO-2026-000012 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x6526b28988fc… block 79
+[06:36:31] PO-2026-000012 ✔ FINALIZE hub.finalize -> Paid tx 0xe746384f6e6b… block 81
+[06:36:31] PO-2026-000013 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0xb3b53290… tx 0x1bb671749b0f… block 84 (event PurchaseOrderApproved)
+[06:36:31] PO-2026-000013 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x019cfe9e036b… block 85
+[06:36:32] PO-2026-000013 ✔ FINALIZE hub.finalize -> Paid tx 0xe20b0a558418… block 87
+[06:36:32] PO-2026-000014 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x5881b88d… tx 0x97c5a37433a0… block 90 (event PurchaseOrderApproved)
+[06:36:32] PO-2026-000014 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x0f0e72b4e7ee… block 91
+[06:36:32] PO-2026-000014 ✔ FINALIZE hub.finalize -> Paid tx 0x0aa1ff6fb0f5… block 93
+[06:36:33] PO-2026-000015 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0xd67823fc… tx 0x0f6790662c0b… block 96 (event PurchaseOrderApproved)
+[06:36:33] PO-2026-000015 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x548b2ba02246… block 97
+[06:36:33] PO-2026-000015 ✔ FINALIZE hub.finalize -> Paid tx 0xe37fb5a4a072… block 99
+[06:36:33] PO-2026-000016 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0xcd93afa8… tx 0xd5533ead703f… block 102 (event PurchaseOrderApproved)
+[06:36:33] PO-2026-000016 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x1fe3697e24d7… block 103
+[06:36:33] PO-2026-000016 ✔ FINALIZE hub.finalize -> Paid tx 0x99463b622d53… block 105
+[06:36:34] PO-2026-000017 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x294721bc… tx 0xe07fceb0d5e3… block 108 (event PurchaseOrderApproved)
+[06:36:34] PO-2026-000017 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x8e3245d81299… block 109
+[06:36:34] PO-2026-000017 ✔ FINALIZE hub.finalize -> Paid tx 0x1c83dba3610e… block 111
+[06:36:34] PO-2026-000018 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x871d76da… tx 0xace04e965eb8… block 114 (event PurchaseOrderApproved)
+[06:36:34] PO-2026-000018 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x4b1a10c795eb… block 115
+[06:36:34] PO-2026-000018 ✔ FINALIZE hub.finalize -> Paid tx 0x2d5ba2513a2b… block 117
+[06:36:35] PO-2026-000019 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x2d0560ea… tx 0x98baeababade… block 120 (event PurchaseOrderApproved)
+[06:36:35] PO-2026-000019 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x909bf4d20305… block 121
+[06:36:35] PO-2026-000019 ✔ FINALIZE hub.finalize -> Paid tx 0xdde56d871672… block 123
+[06:36:35] PO-2026-000020 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0xd5cff7d0… tx 0xb800e57a5562… block 126 (event PurchaseOrderApproved)
+[06:36:35] PO-2026-000020 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0xdacf2abd03fb… block 127
+[06:36:35] PO-2026-000020 ✔ FINALIZE hub.finalize -> Paid tx 0x248301aaa01b… block 129
+[06:36:36] PO-2026-000021 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x3f4bea6d… tx 0x0f7ddad2114f… block 132 (event PurchaseOrderApproved)
+[06:36:36] PO-2026-000021 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x4f0d5ca62b9c… block 133
+[06:36:36] PO-2026-000021 ✔ FINALIZE hub.finalize -> Paid tx 0x4d2a5be4a196… block 135
+[06:36:36] PO-2026-000022 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0xbc36d7e6… tx 0x8d723b0bca40… block 138 (event PurchaseOrderApproved)
+[06:36:36] PO-2026-000022 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0xaccd0e1c9e6f… block 139
+[06:36:36] PO-2026-000022 ✔ FINALIZE hub.finalize -> Paid tx 0x510424b75b89… block 141
+[06:36:37] PO-2026-000023 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x70effeaa… tx 0x287c98f2135e… block 144 (event PurchaseOrderApproved)
+[06:36:37] PO-2026-000023 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x497a7b6d2597… block 145
+[06:36:37] PO-2026-000023 ✔ FINALIZE hub.finalize -> Paid tx 0x550da4fb104e… block 147
+[06:36:37] PO-2026-000024 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x7baa0d4c… tx 0xe56fcc53fe33… block 150 (event PurchaseOrderApproved)
+[06:36:37] PO-2026-000024 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0xb8184a3c4994… block 151
+[06:36:38] PO-2026-000024 ✔ FINALIZE hub.finalize -> Paid tx 0x3781f7cc7706… block 153
+[06:36:38] PO-2026-000025 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x03f9c2a6… tx 0x7e7011edd971… block 156 (event PurchaseOrderApproved)
+[06:36:38] PO-2026-000025 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x30e0c9184d67… block 157
+[06:36:38] PO-2026-000025 ✔ FINALIZE hub.finalize -> Paid tx 0x0883ef661a3f… block 159
+[06:36:38] PO-2026-000026 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x6c707401… tx 0x5062851c747a… block 162 (event PurchaseOrderApproved)
+[06:36:38] PO-2026-000026 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x79e68d061253… block 163
+[06:36:39] PO-2026-000026 ✔ FINALIZE hub.finalize -> Paid tx 0xe160be9e84f8… block 165
+[06:36:39] PO-2026-000027 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x7f2a3be2… tx 0xd3ff88bfe79c… block 168 (event PurchaseOrderApproved)
+[06:36:39] PO-2026-000027 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0xffb4dc374263… block 169
+[06:36:39] PO-2026-000027 ✔ FINALIZE hub.finalize -> Paid tx 0xe888abf6db32… block 171
+[06:36:39] PO-2026-000028 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0xa6d23097… tx 0xe1836c5555ff… block 174 (event PurchaseOrderApproved)
+[06:36:39] PO-2026-000028 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0xa4937b50322b… block 175
+[06:36:40] PO-2026-000028 ✔ FINALIZE hub.finalize -> Paid tx 0xdb4a32cf1d9b… block 177
+[06:36:40] PO-2026-000029 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0x3fc71916… tx 0x92d2e5472084… block 180 (event PurchaseOrderApproved)
+[06:36:40] PO-2026-000029 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x31cb22ac8162… block 181
+[06:36:40] PO-2026-000029 ✔ FINALIZE hub.finalize -> Paid tx 0xfae6a8b7e0ec… block 183
+[06:36:40] PO-2026-000030 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0xb5944a40… tx 0x5e645d68a3bc… block 186 (event PurchaseOrderApproved)
+[06:36:40] PO-2026-000030 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0xa9097eb5fbef… block 187
+[06:36:41] PO-2026-000030 ✔ FINALIZE hub.finalize -> Paid tx 0xffb9135f5c4f… block 189
+[06:36:41] PO-2026-000031 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0xf02da640… tx 0xfa230c2cd595… block 192 (event PurchaseOrderApproved)
+[06:36:41] PO-2026-000031 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x0f0ee518b52b… block 193
+[06:36:41] PO-2026-000031 ✔ FINALIZE hub.finalize -> Paid tx 0x9f344899ec2d… block 195
+[06:36:41] PO-2026-000032 ✔ REGISTER_PAYMENT attempt 1 amount 6350000 docHash 0xe4966f78… tx 0x854672807b88… block 198 (event PurchaseOrderApproved)
+[06:36:42] PO-2026-000032 ✔ LINK hub.linkPayment attempt 1 -> AwaitingPayment tx 0x48882f535608… block 199
+[06:36:42] PO-2026-000032 ✔ FINALIZE hub.finalize -> Paid tx 0xd17163b6c5a5… block 201

@@ -1,0 +1,69 @@
+{
+  "ts": "2026-11-06T07:16:26.603Z",
+  "allPass": true,
+  "steps": [
+    {
+      "name": "compile contracts (Hardhat 3, solc 0.8.28)",
+      "pass": true,
+      "ms": 1778
+    },
+    {
+      "name": "tests: hub unit + fuzz + invariants + PR5 bank",
+      "pass": true,
+      "ms": 15068
+    },
+    {
+      "name": "OWASP Smart Contract Top 10 (2025) check",
+      "pass": true,
+      "ms": 75
+    },
+    {
+      "name": "secrets scan",
+      "pass": true,
+      "ms": 190
+    },
+    {
+      "name": "web build (vite)",
+      "pass": true,
+      "ms": 5312
+    },
+    {
+      "name": "npm audit (production deps, high+critical)",
+      "pass": true
+    }
+  ],
+  "audit": {
+    "rootProd": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "webProd": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "rootAll": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 12,
+      "critical": 0,
+      "total": 12
+    },
+    "webAll": {
+      "info": 0,
+      "low": 0,
+      "moderate": 1,
+      "high": 1,
+      "critical": 0,
+      "total": 2
+    }
+  }
+}
